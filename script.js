@@ -1,3 +1,12 @@
+function getData(url) {
+    fetch(url)
+        .then(res => res.json())
+        .then(res => {
+            console.log(res);
+            updateResults(res);
+        });
+}
+
 function onClick(e) {
     e.preventDefault();
     let userText = document.getElementById("userText").value;
@@ -6,24 +15,30 @@ function onClick(e) {
         field = field.value;
     }
     let url = "";
-    switch(field) {
+    switch (field) {
         case "meal":
             url = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + userText;
             break;
         case "ingredient":
-
+            url = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + userText;
+            break;
         case "category":
             url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + userText;
 
             break;
         case "area":
-
+            url = "https://www.themealdb.com/api/json/v1/1/filter.php?a=" + userText;
+            break;
         default:
             url = 'https://www.themealdb.com/api/json/v1/1/random.php';
-            url = "https://official-joke-api.appspot.com/random_joke";
             break;
     }
-    fetch(url)
+
+    getData(url);
+
+
+    /*
+       fetch(url)
         .then(function (response) {
             if (response.status != 200) {
                 return {
@@ -32,14 +47,52 @@ function onClick(e) {
             }
             console.log(response);
             return response.json();
-        }).then(function(json) {
+        }).then(function (json) {
             console.log(json.text);
             updateResults(json.text);
         });
+        */
+
+
 }
 
 function updateResults(info) {
-    document.getElementById("results").textContent = info;
+    let recipes = "";
+    if (info.meals.length > 1) {
+        recipes += "<div class='recipe-prev-cont'>";
+        for (let i = 0; i < info.meals.length; i++) {
+            recipes += "<div class=recipe-prev>";
+            recipes += "<p>" + info.meals[i].strMeal + "</p>";
+            recipes += "<img src=" + info.meals[i].strMealThumb + "/preview />";
+            recipes += "<button type='button' class='rec-link' id=" + info.meals[i].idMeal + ">View Recipe</button>";
+            recipes += "</div>";
+        }
+
+        recipes += "</div>";
+         document.getElementById("recipe-cont").innerHTML = recipes;
+        
+    }
+    else {
+        recipes += "<div class='recipe-full-cont'>";
+        recipes += "<div class=recipe>";
+        recipes += "<p>" + info.meals[0].strMeal + "</p>";
+        recipes += "<img src=" + info.meals[0].strMealThumb + "/preview />";
+        recipes += "<hr/>";
+        for (let i = 1; i <= 20; i++) {
+            let currIng = "strIngredient" + i;
+            let currMeasure = "strMeasure" + i;
+            if (info.meals[0][currIng] != "" && info.meals[0][currIng] != null) {
+                recipes += "<p>" + info.meals[0][currMeasure] + " ";
+                recipes += info.meals[0][currIng] + "</p>";
+            }
+        }
+        recipes += "<hr />";
+        recipes += "<p>" + info.meals[0].strInstructions + "</p>";
+        recipes += "</div>";
+        recipes += "</div>";
+        document.getElementById("recipe-cont").innerHTML = recipes;
+    }
+   
 }
 
 document.getElementById('submit').addEventListener('click', onClick);
