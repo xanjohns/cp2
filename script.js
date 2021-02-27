@@ -29,6 +29,9 @@ function onClick(e) {
         case "area":
             url = "https://www.themealdb.com/api/json/v1/1/filter.php?a=" + userText;
             break;
+        case "random":
+            url = "https://www.themealdb.com/api/json/v1/1/random.php";
+            break;
         default:
             url = 'https://www.themealdb.com/api/json/v1/1/random.php';
             break;
@@ -58,13 +61,15 @@ function onClick(e) {
 
 function updateResults(info) {
     let recipes = "";
-    if (info.meals.length > 1) {
+    if (info.meals==null){
+        document.getElementById("recipe-cont").innerHTML = "<p class='error-text'>Sorry, no results came up for that search. Please try something else!</p>";
+    }
+    else if (info.meals.length > 1) {
         recipes += "<div class='recipe-prev-cont'>";
         for (let i = 0; i < info.meals.length; i++) {
             recipes += "<div class=recipe-prev>";
-            recipes += "<p>" + info.meals[i].strMeal + "</p>";
-            recipes += "<img src=" + info.meals[i].strMealThumb + "/preview />";
-            recipes += "<button type='button' class='rec-link' id=" + info.meals[i].idMeal + ">View Recipe</button>";
+            recipes += "<p class='prev-meal-title'>" + info.meals[i].strMeal + "</p>";
+            recipes += "<img class='img-prev' src=" + info.meals[i].strMealThumb + "/preview />";
             recipes += "</div>";
         }
 
@@ -72,12 +77,15 @@ function updateResults(info) {
          document.getElementById("recipe-cont").innerHTML = recipes;
         
     }
-    else {
+    else if (info.meals.length == 1) {
         recipes += "<div class='recipe-full-cont'>";
         recipes += "<div class=recipe>";
-        recipes += "<p>" + info.meals[0].strMeal + "</p>";
-        recipes += "<img src=" + info.meals[0].strMealThumb + "/preview />";
+        recipes += "<div class='top-cont'";
+        recipes += "<p class='meal-title'>" + info.meals[0].strMeal + "</p>";
+        recipes += "<img class='preview' src=" + info.meals[0].strMealThumb + "/preview />";
+        recipes += "</div>"
         recipes += "<hr/>";
+        recipes += "<div class='ingr-cont'>"
         for (let i = 1; i <= 20; i++) {
             let currIng = "strIngredient" + i;
             let currMeasure = "strMeasure" + i;
@@ -86,12 +94,14 @@ function updateResults(info) {
                 recipes += info.meals[0][currIng] + "</p>";
             }
         }
+        recipes += "</div>";
         recipes += "<hr />";
-        recipes += "<p>" + info.meals[0].strInstructions + "</p>";
+        recipes += "<p class='instr'>" + info.meals[0].strInstructions + "</p>";
         recipes += "</div>";
         recipes += "</div>";
         document.getElementById("recipe-cont").innerHTML = recipes;
     }
+   
    
 }
 

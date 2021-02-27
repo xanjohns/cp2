@@ -4,12 +4,17 @@
 <head>
     <title>Cp2</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Acme&family=Architects+Daughter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <h1>Find your Food</h1>
+
+    <input type="text" id="userText" name="field"> <br>
     <form>
-        <input type="text" id="userText" name="field">
         <input type="radio" id="meal" value="meal" name="field">
         <label for="meal">Meal</label>
         <input type="radio" id="ingredient" value="ingredient" name="field">
@@ -17,12 +22,21 @@
         <input type="radio" id="category" value="category" name="field">
         <label for="category">Category</label>
         <input type="radio" id="area" value="area" name="field">
-        <label for="area">Area</label>
-        <button type="button" id="submit">Submit</button>
+        <label for="area">Area</label> <br>
+        <input type="radio" id="random" value="random" name="field">
+        <label for="random">Random</label>
     </form>
+    <button type="button" id="submit">Submit</button>
 
     <div id="recipe-cont">
 
+    </div>
+
+    <div class='footer-cont'>
+        <div class='link'>
+            <a href="https://github.com/xantastic/cp2">View on Github</a>
+        </div>
+    
     </div>
 
     <script text="type/javascript" src="script.js">
@@ -31,4 +45,3 @@
 </body>
 
 </html>
-

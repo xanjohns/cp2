@@ -1,3 +1,276 @@
 * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin-top: 50px;
+    font-size: 11vw;
+    text-align: center;
+    font-family: 'Acme', sans-serif;
+
+}
+
+#userText {
+    width: 80%;
+    display: block;
+    height: auto;
+    margin: 20px auto 5px;
+    font-size: 7vw;
+}
+
+label {
+    font-size: 4vw;
+    margin: auto 5px;
+}
+
+form {
+    margin: 5px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    text-align: center;
+}
+
+#submit {
+    width: 30%;
+    height: auto;
+    display: block;
+    font-size: 5vw;
+    margin: 20px auto;
+}
+
+form input {
+    
+}
+
+.recipe-cont-full {
+    width: 90%;
+    height: auto;
+    
+}
+
+.top-cont {
+    width: 100%  ;
+    height: auto;
+}
+.recipe {
+    width: 90%;
+    height: auto;
+    background-color: #eadfeb;
+    border-radius: 10px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+
+}
+.preview {
+    width: 70%;
+    height: auto;
+    margin: 5px auto 30px;
+    display: block;
+}
+
+.top-cont {
+    font-size: 6vw;
+    text-align: center !important;
+    font-family: 'Architects Daughter', cursive !important;
+}
+
+hr {
+    height: 5px;
+    width: 80%;
+    margin: auto auto;
+}
+
+.ingr-cont {
+    display: flex  ;
+    width: 100%  ;
+    height: 200px  ;
+    flex-flow: column wrap  ;
+    font-size: 3vw  ;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0px 20px;
+   
+    
+
+}
+
+.instr {
+    margin-top: 20px;
+    font-weight: 2vw;
+    padding: 5px 30px;
+}
+
+.error-text {
+    text-align: center;
+    font-size: 5vw;
+    padding: 5px 20px;
+}
+
+.recipe-prev-cont {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 10px auto;
+    width: 90%;
+    height: auto;
+    justify-content: space-between;
+    background-color: #eadfeb;
+    border-radius: 10px;
+}
+
+.recipe-prev {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28%;
+    height: auto;
+    margin: 15px auto;
+}
+
+.img-prev {
+    width: 100%;
+    height: auto;
+}
+
+.prev-meal-title {
+    font-size: 3vw;
+    text-align: center;
+    font-family: 'Architects Daughter', cursive;
+}
+
+.footer-cont{
+    opacity: 70%;
+    width: 100%;
+    height: 7%  ;
+    background-color: darkolivegreen;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.link {
+    width: 30%  ;
+    height: 70%;
+    border-radius: 10px;
+    font-size: 4vw  ;
+    background-color: gainsboro;
+    margin-right: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    
+    justify-content: center;
+    
+
+}
+
+.link:hover {
+    background-color: darkgrey;
+}
+
+a {
+    text-decoration: none;
+    margin: auto 5px;
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+a:visited {
+    color: black;
+}
+
+body {
+    padding-bottom: 140px  ;
+}
+
+@media only screen and (min-width: 800px) {
+    h1 {
+        font-size: 6vw;
+    }
+
+    body {
+        padding-bottom: 50px;
+    }
+    .footer-cont {
+        height: 8%;
+    }
+
+    .link {
+        width: 10%;
+        font-size: 1.3vw  ;
+    }
+    
+    #userText {
+        width: 60%;
+        font-size: 3vw;
+    }
+
+    label {
+        font-size: 2vw;
+    }
+
+    form {
+        width: 40%;
+    }
+
+    #submit {
+        width: 15%;
+        font-size: 2vw;
+    }
+
+    .top-cont {
+        width: 30%  ;
+        height: auto  ;
+        font-size: 2vw  ;
+        text-align: center  ;
+        font-family: 'Architects Daughter', cursive  ;
+        margin: 20px 40px 10px  ;
+    }
+
+    .preview {
+        width: 100%;
+    }
+
+    .recipe {
+        display: flex  ;
+        flex-direction: row  ;
+        flex-wrap: wrap  ;
+    }
+
+    .ingr-cont {
+        font-size: 1.5vw  ;
+        width: 50%  ;
+        height: auto  ;
+        margin: auto auto  ;
+    }
+
+    hr {
+        display: none;
+    }
+
+    .instr {
+        padding-bottom: 40px;
+        font-size: 1.5vw;
+    }
+
+    .recipe-prev {
+        width: 18%;
+    
+    }
+
+    .prev-meal-title {
+        font-size: 2vw;
+    }
+
+   
 }
